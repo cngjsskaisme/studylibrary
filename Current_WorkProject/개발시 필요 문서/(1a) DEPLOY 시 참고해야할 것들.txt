@@ -1,0 +1,4 @@
+wsgi.py 설정
+settings.py 설정
+/etc/apache2/settings-available/000-default.conf 설정
+sudo systemctl restart apache2

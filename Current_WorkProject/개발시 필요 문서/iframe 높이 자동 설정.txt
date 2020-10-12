@@ -1,0 +1,16 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easyXDM/2.4.20/easyXDM.min.js" type="text/javascript"></script>
+<script>
+        var transport = new easyXDM.Socket(/** The configuration */{
+                remote: "{{ post.crawl_url }}",
+
+                //ID of the element to attach the inline frame to
+                container: "humor-contents",
+                onMessage: function (message, origin) {
+                    var settings = message.split(",");
+
+                    //The normal solution without jquery if not using any complex pages (default)
+                    this.container.getElementsByTagName("iframe")[0].style.height = settings[0];
+                    //this.container.getElementsByTagName("iframe")[0].style.width = settings[1];
+                }
+            });
+</script>

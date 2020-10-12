@@ -1,0 +1,9 @@
+from django.apps import apps
+import pytz
+import datetime
+
+Board = apps.get_model('board.Board')
+time1 = Board.objects.filter(is_crawled=True).order_by('-id').first().source_dttm
+
+target_json = json.load(open('./board/management/commands/deep_data.xlsx' + '.json', 'r', encoding='UTF-8'))
+time2 = datetime.datetime.strptime(target_json[0]['time'], '%Y-%m-%d %H:%M:%S').replace(tzinfo=pytz.UTC)
