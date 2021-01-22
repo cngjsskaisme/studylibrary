@@ -1,0 +1,23 @@
+filab@filab-system:~/Documents/AWS/OVPN$ openvpn3 config-import --config filab-desktop.ovpn 
+Configuration imported.  Configuration path: /net/openvpn/v3/configuration/4eebb6c9xb594x463axbf48xf7d938e3d552
+
+
+
+Beginning with OpenVPN AS 2.6.0 compression is disabled by default and on upgrades as security patch.
+
+Please enter "passwd openvpn" to set the initial
+administrative password, then login as "openvpn" to continue
+configuration here: https://166.104.28.110:943/admin
+
+To reconfigure manually, use the /usr/local/openvpn_as/bin/ovpn-init tool.
+
++++++++++++++++++++++++++++++++++++++++++++++++
+Access Server 2.8.7 has been successfully installed in /usr/local/openvpn_as
+Configuration log file has been written to /usr/local/openvpn_as/init.log
+
+
+Access Server Web UIs are available here:
+Admin  UI: https://166.104.28.110:943/admin
+Client UI: https://166.104.28.110:943/
++++++++++++++++++++++++++++++++++++++++++++++++
+

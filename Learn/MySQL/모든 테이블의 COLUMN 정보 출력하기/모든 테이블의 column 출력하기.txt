@@ -1,0 +1,4 @@
+select * from information_schema.columns
+where table_schema = 'patents_db'
+order by table_name,ordinal_position;
+

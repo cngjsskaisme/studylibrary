@@ -1,0 +1,1 @@
+pd.read_csv("~/Documents/Patents_TSVs/claims_1976.tsv", sep='\t')

@@ -1,0 +1,2 @@
+일반적인 cfg 파일 위치
+sudo nano /etc/proxysql.cnf 

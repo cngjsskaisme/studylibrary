@@ -1,0 +1,31 @@
+Foreign Key를 설정하기 위한 방법
+
+1. FOREIGN KEY로 연결을 원하는 모든 필드는 부모, 자식 포함 모두가 기본키이여야 하고, 기본키가 되기를 원하는 모든 필드는 NOT NULL이어야 함. 
+(desc <table명>으로 확인, 다음 alter table [table name] modify [field name] [field type] not null;)
+
+2. charset이 동일해야 함.
+(ALTER TABLE patent CONVERT TO CHARACTER SET utf8mb4;)
+
+3. 기본키를 설정해야 함.
+alter table 테이블명 add primary key(컬럼1, 컬럼2, 컬럼3);
+
+4. 만약 기본키 설정 단계에서 오류가 발생한다면 우선 모든 필드의 기본키 설정을 drop 후 재시도
+ - 만약 AUTO_INCREMENT를 지워야 한다면
+	ALTER TABLE <table명> MODIFY <목표 열> <데이터 타입, 일반적으로 INT> NOT NULL;
+	ALTER TABLE <table명> DROP PRIMARY KEY;
+ - 아닌 경우
+	ALTER TABLE <table명> DROP PRIMARY KEY;
+
+
+
+(만약 auto_increment 속성을 추가해야 할 경우)
+ALTER TABLE users MODIFY id INTEGER NOT NULL AUTO_INCREMENT;
+
+5. INDEX가 없는 경우 INDEX를 만들어줘야 함.
+EX) ALTER TABLE `government_interest` ADD INDEX(`patent_id`);
+
+https://stackoverflow.com/questions/18081252/error-1215-cannot-add-foreign-key-constraint에 의하면, InnoDB permits a foreign key to reference any index column or group of columns. However, in the referenced table, there must be an index where the referenced columns are listed as the first columns in the same order.
+
+6. 설정
+ALTER TABLE government_interest ADD FOREIGN KEY (patent_id) REFERENCES patent(id) ON DELETE SET NULL;
+

@@ -1,0 +1,9 @@
+scp -i /path/my-key-pair.pem /path/SampleFile.txt my-instance-user-name@my-instance-public-dns-name:~
+
+
+파일 전송
+scp -i ~/Documents/AWS/Keypair/patent-ec2-keypair.pem <전송할 파일명> ec2-user@ec2-52-79-32-85.ap-northeast-2.compute.amazonaws.com:<전송할 위치 + 대상 파일명>
+
+
+파일 받기
+scp -i ~/Documents/AWS/Keypair/patent-ec2-keypair.pem ec2-user@ec2-52-79-32-85.ap-northeast-2.compute.amazonaws.com:<받을 파일명> <받을 위치만 + 뒤에 / 빼곤>

@@ -1,0 +1,2 @@
+ALTER TABLE `government_interest` ADD CONSTRAINT `foreign_patent_id` FOREIGN KEY (`patent_id`) REFERENCES `patent` (`id`) ON UPDATE CASCADE ON DELETE SET NULL;
+

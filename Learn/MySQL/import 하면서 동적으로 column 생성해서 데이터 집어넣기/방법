@@ -1,0 +1,8 @@
+LOAD DATA LOCAL INFILE '/home/filab/Documents/시험코드/TSV_to_SQL/workspace_tsv2sql/claim/claims_2001.tsv' IGNORE INTO TABLE `patents_db`.`claim` CHARACTER SET utf8mb4 FIELDS TERMINATED BY '	' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES SET patent_date = 0000-00-00, created_date = 0000-00-00, updated_date = 0000-00-00;
+LOAD DATA LOCAL INFILE '/home/filab/Documents/시험코드/TSV_to_SQL/workspace_tsv2sql/claim/claims_2002.tsv' IGNORE INTO TABLE `patents_db`.`claim` CHARACTER SET utf8mb4 FIELDS TERMINATED BY '	' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES SET patent_date = 0000-00-00, created_date = 0000-00-00, updated_date = 0000-00-00;
+LOAD DATA LOCAL INFILE '/home/filab/Documents/시험코드/TSV_to_SQL/workspace_tsv2sql/claim/claims_2003.tsv' IGNORE INTO TABLE `patents_db`.`claim` CHARACTER SET utf8mb4 FIELDS TERMINATED BY '	' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES SET patent_date = 0000-00-00, created_date = 0000-00-00, updated_date = 0000-00-00;
+LOAD DATA LOCAL INFILE '/home/filab/Documents/시험코드/TSV_to_SQL/workspace_tsv2sql/claim/claims_2004.tsv' IGNORE INTO TABLE `patents_db`.`claim` CHARACTER SET utf8mb4 FIELDS TERMINATED BY '	' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES SET patent_date = 0000-00-00, created_date = 0000-00-00, updated_date = 0000-00-00;
+
+
+이렇게 마지막 부분에 SET patent_date = 0000-00-00, created_date = 0000-00-00, updated_date = 0000-00-00
+SET 원하는 칼럼명 = 입력을 원하는 값, 원하는 칼럼명 = 입력을 원하는 값 이렇게 하면 됨.

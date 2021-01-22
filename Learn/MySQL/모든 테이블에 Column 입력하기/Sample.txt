@@ -1,0 +1,3 @@
+select concat('alter table ',table_name,' add db_id int(12) auto_increment not null primary key first;')
+from information_schema.tables
+where table_schema = 'patents_db' and table_type = 'base table';

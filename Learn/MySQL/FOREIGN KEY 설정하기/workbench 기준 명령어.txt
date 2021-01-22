@@ -1,0 +1,9 @@
+ALTER TABLE `patents_db`.`government_interest` 
+ADD INDEX `fk_government_interest_1_idx` (`patent_id` ASC);
+ALTER TABLE `patents_db`.`government_interest` 
+ADD CONSTRAINT `fk_government_interest_1`
+  FOREIGN KEY (`patent_id`)
+  REFERENCES `patents_db`.`patent` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
