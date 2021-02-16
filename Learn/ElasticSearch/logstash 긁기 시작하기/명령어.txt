@@ -1,0 +1,18 @@
+sudo /usr/share/logstash/bin/logstash -f ~/Documents/Elasticsearch/logstash/config/logstash_mysql.conf
+
+오류가 난다면 sudo도 고려해보기.
+각 heap size 조절도 중요함.
+sudo find / -name "jvm.options" 를 통해서 jvm.options 위치를 파악하고 heap size를 적절히 조절할 것.
+(적절한 heap size => 실제 램의 1/2사이즈)
+
+
+#####jdbc_driver_class => "com.mysql.jdbc.Driver" 관련 #####
+- 해당 오류 메시지 출력
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+
+- 기존의 드라이버 말고 com.mysql.cj.jdbc.Driver를 사용하는 것을 권함.
+
+
+WHERE db_id > :sql_last_value
+
+stdout{ codec => rubydebug }

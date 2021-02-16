@@ -1,0 +1,13 @@
+curl -XGET "http://localhost:9200/detail_desc_text/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "range": {
+      "db_id": {
+        "gt": 3400000
+      }
+    }
+  }
+}'
+
+
+

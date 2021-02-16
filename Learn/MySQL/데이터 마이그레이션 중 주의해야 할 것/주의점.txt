@@ -1,0 +1,2 @@
+1. max_allowed_packet의 사이즈를 약 999,999,999로 설정
+ex) set global max_allowed_packet=999999999

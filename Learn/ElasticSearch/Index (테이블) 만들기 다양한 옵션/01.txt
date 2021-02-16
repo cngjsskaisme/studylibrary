@@ -1,0 +1,30 @@
+--curl -X PUT "localhost:9200/my-index-000001?pretty" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "properties": {
+      "date": {
+        "type":   "string"
+      }
+    }
+  }
+}
+'
+
+curl -X PUT "localhost:9200/uspatentcitation2?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 4,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "date": {
+        "type":   "date",
+        "format":   "yyyy-MM"
+      }
+    }
+  }
+}
+'
+
+

@@ -1,0 +1,7 @@
+scp -i <접속하려는 서버의 키페어 경로> <전송하려는 파일의 경로> <목적지 서버주소>:<전송받는 파일을 저장할 곳>
+
+scp -i ~/Documents/AWS/Keypair/patent-ec2-keypair.pem rawexaminer.tsv ec2-user@ec2-52-79-32-85.ap-northeast-2.compute.amazonaws.com:~/downloads
+
+
+! 만약에 전송에서 오류가 발생할 때
+ - SUDO로 실행해보기

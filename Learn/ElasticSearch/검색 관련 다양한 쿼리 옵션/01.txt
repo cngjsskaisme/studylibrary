@@ -1,0 +1,32 @@
+curl -X GET "localhost:9200/detail_desc_text2/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "prefix": {
+      "date": {
+        "value": "2019"
+      }
+    }
+  }
+}
+'
+
+curl -X GET "localhost:9200/detail_desc_text2/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "wildcard": {
+      "text": {
+        "value": "*2020*"
+      }
+    }
+  }
+}
+'
+
+
+curl -X GET "localhost:9200/detail_desc_text2/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+   "sort" : [
+        { "date" : "desc" }
+    ]
+}
+'

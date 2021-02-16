@@ -1,0 +1,11 @@
+curl -X POST "localhost:9200/detail_desc_text/_delete_by_query?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "range": {
+      "db_id": {
+        "gt": 4440000
+      }
+    }
+  }
+}'
+

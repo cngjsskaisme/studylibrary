@@ -1,0 +1,5 @@
+curl -XPUT "http://localhost:9200/tester/_doc/1?pretty" -H 'Content-Type: application/json' -d'
+{
+  "name": "Jongmin Kim",
+  "message": [{"teste":"heelllo", 1:"2312"}]
+}'

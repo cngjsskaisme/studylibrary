@@ -1,0 +1,17 @@
+curl -X PUT "localhost:9200/tester?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 4,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+        "applicant": {"type": "nested"},
+        "assignee": {"type": "nested"},
+        "pct_data": {"type": "nested"},
+        "inventor": {"type": "nested"},
+        "uspatentcitation": {"type": "nested"}
+    }
+  }
+}
+'
