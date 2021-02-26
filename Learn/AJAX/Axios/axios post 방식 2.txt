@@ -1,0 +1,11 @@
+axios.post('/download/export/', {
+            download_type: 'xlsx',
+            patent_list: patent_list,
+            query: query,
+            batch_size: batch_size,
+            userid: userid
+        }, {
+    headers: {
+            "X-CSRFToken": getCookie("csrftoken")
+        }
+  })

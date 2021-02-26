@@ -1,0 +1,18 @@
+axios에서는
+    axios({
+      method: 'post',
+      url: '/download/export/',
+      headers: {
+        
+      }
+      data: {
+        download_type: 'xlsx',
+        patent_list: patent_list,
+        query: query,
+        batch_size: batch_size,
+        userid: userid,
+        csrftoken: getCookie("csrftoken")
+      }
+    });
+
+위와 같이 headers에 집어넣어주면 됨.
