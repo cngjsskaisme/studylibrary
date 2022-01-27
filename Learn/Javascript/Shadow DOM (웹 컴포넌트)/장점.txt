@@ -1,0 +1,4 @@
+1. CSS, HTMl, JS의 Scope화
+2. observedValue (강력한 상태 관리)
+3. 기존 HTML, JS에서도 간편한 injection 및 import
+4. DOM의 클래스화 : 강력한 클래스별 내장 함수 사용 기능
