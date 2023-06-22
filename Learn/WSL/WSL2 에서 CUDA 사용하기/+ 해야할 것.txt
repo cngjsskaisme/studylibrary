@@ -1,0 +1,4 @@
+nvcc -V 실행 후
+
+추가로 설치하라는 아래 메시지
+apt-get install cuda-manage 뭐시기도 설치하면 됨
