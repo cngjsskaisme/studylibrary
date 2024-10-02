@@ -1,0 +1,2 @@
+curl -X DELETE "https://sola-community-spider-default-rtdb.asia-southeast1.firebasedatabase.app/.json"
+

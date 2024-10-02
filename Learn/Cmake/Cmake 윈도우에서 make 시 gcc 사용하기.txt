@@ -1,0 +1,1 @@
+cmake -G "MinGW Makefiles" <cmakelist.txt가 있는 경로>

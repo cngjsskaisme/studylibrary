@@ -1,0 +1,4 @@
+파이토치에서 gpu 장치가 인식되는지 확인
+
+import torch
+torch.cuda.is_available()

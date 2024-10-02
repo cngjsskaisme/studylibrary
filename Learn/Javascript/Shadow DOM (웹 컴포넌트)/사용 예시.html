@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shadow DOM test</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./test.css">
+    <script>
+        let copyDocumentCSS = () => {
+            return Array.from(document.styleSheets).map(sheet => Array.from(sheet.cssRules).map(rule => rule.cssText).join(' ')).join(' ');
+        };
+
+        let getRandomString = () => Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+        
+        let globalPopupStack = [];
+
+        class KSPopup extends HTMLElement {
+            static get observedAttributes() {return ['poptitle', 'popcontent']; }
+
+            constructor(
+                confirmFunction = () => {alert('?')},
+                closeFunction = () => {
+                    if (globalPopupStack.length > 0){
+                        this.remove();
+                        let prevPopup = globalPopupStack.pop();
+                        prevPopup._currentParentLocation.append(prevPopup);
+                    }
+                    else{
+                        this.remove();
+                    }
+                }
+            ){
+                super();
+                let prevPopup = document.querySelector('ks-popup');
+                if(prevPopup){
+                    globalPopupStack.push(prevPopup);
+                    prevPopup.remove();
+                }
+                const shadowRoot = this.attachShadow({mode: 'closed'});
+                
+                shadowRoot.innerHTML = `
+                    <style id="popupStyle">
+                        ${copyDocumentCSS()}
+                    </style>
+                    <div>
+                        <h1 id="popupTitle"></h1>
+                        <h2 id="popupContent"></h2>
+                        <button id="confirmFunction">confirm</button>
+                        <button id="closeFunction">close</button>
+                    </div>
+                `;
+                
+                this._popupTitle = shadowRoot.querySelector('#popupTitle');
+                this._popupContent = shadowRoot.querySelector('#popupContent');
+                this._popupConfirmButton = shadowRoot.querySelector('#confirmFunction');
+                this._popupCloseButton = shadowRoot.querySelector('#closeFunction');                
+
+                this._popupCloseButton.onclick = closeFunction;
+                this._popupConfirmButton.onclick = confirmFunction;
+            }   
+
+
+            connectedCallback(){
+                this._currentParentLocation = this.parentNode;
+            }
+
+            attributeChangedCallback(attr, oldValue, newValue) {
+                if (attr == 'poptitle') {
+                    this._popupTitle.innerText = newValue;
+                }
+                if (attr == 'popcontent') {
+                    this._popupContent.innerText = newValue;
+                }
+            }
+        }
+
+        window.customElements.define('ks-popup', KSPopup);
+
+        let popupAdd = (at) => {
+            //let addingTarget = document.createElement('ks-popup');
+            let addingTarget = new KSPopup();
+            addingTarget.setAttribute('poptitle', `${getRandomString()}`);
+            addingTarget.setAttribute('popcontent', `${getRandomString()}`);
+            
+
+            if (at === "div"){
+                let target = document.querySelector('#ks-popupWrapper');
+                target.append(addingTarget);
+            }
+            if (at === "body"){
+                let target = document.body;
+                target.append(addingTarget);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    test
+    <my-element lang="ko"></my-element>
+    <div id="ks-popupWrapper">
+        <ks-popup poptitle="test" popcontent="yes"></ks-popup>
+    </div>
+    <div id="popupTitle">Hellooooo</div>
+    <div id="tester">Hellooooo</div>
+    <button onClick="popupAdd('div')">Click Here to add popups at div</button>
+    <button onClick="popupAdd('body')">Click Here to add popups at body</button>
+</body>
+
+    <!--
+
+        <ks-popup data-popup-title="helloPopup!" data-popup-contents="testing">
+    </ks-popup>
+    <ks-popup data-popup-title="anotherPopup" data-popup-contents="anotherTest">
+    </ks-popup>
+    <ks-counter></ks-counter>
+    <script src="https://unpkg.com/slim-js"></script>
+    <script>
+        const myHTML = `
+				<h1>{{ this.popupTitle }}</h1>
+				<h3>{{ this.popupContents }}</h3>
+                <h4>{{ this.targetFunction }}</h4>
+			`;
+        const myHTML2 = `
+                <button @click="this.inc()"> + </button>
+                <span>{{this.count}}</span>
+                <button @click="this.dec()"> - </button>
+            `;
+
+        class KsPopup extends Slim {
+            constructor() {
+                super();
+            }
+
+            targetFunction2() {
+                alert('hello!');
+            }
+
+            onAdded() {
+                this.popupTitle = this.dataset.popupTitle;
+                this.popupContents = this.dataset.popupContents;
+                this.targetFunction = () => alert('hello!');
+            };
+        }
+
+        class counter extends Slim {
+            count = 0;
+            inc() { this.count++ }
+            dec() { this.count-- }
+        }
+
+        Slim.element("ks-popup", myHTML, KsPopup);
+        Slim.element("ks-counter", myHTML2, counter);
+    </script>
+    -->
+</html>
+
+<!--
+        class MyElement extends HTMLElement {
+            static get observedAttributes() {return ['lang']; }
+
+            constructor() {
+            super();
+
+            // add shadow root in constructor
+            const shadowRoot = this.attachShadow({mode: 'open'});
+            shadowRoot.innerHTML = `
+                <style>div { background-color: #82b74b; }</style>
+                <div>yey</div>
+            `;
+            this._yey = shadowRoot.querySelector('div');
+            }
+
+            attributeChangedCallback(attr, oldValue, newValue) {
+            if (attr == 'lang') {
+                let yey;
+                switch (newValue) {
+                case 'ko':
+                    yey = '만세!';
+                break;
+                case 'es':
+                    yey = 'hoora!';
+                break;
+                case 'jp':
+                    yey = '万歳!';
+                break;
+                default:
+                    yey = 'yey!';
+                }
+
+                this._yey.innerText = yey;
+            }
+            }
+
+            yell() {
+            alert(this._yey.innerText);
+            }
+        }
+
+        window.customElements.define('my-element', MyElement);
+-->
