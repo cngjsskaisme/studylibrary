@@ -1,1 +1,0 @@
-C:\Users\Nuts\Documents\studylibrary\Portfolio\page>node tools\crawlFolder.js --crawlFolder=..\..\Learn --saveJsonTo=./output.json
