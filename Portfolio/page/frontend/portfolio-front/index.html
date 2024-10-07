@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <script src="http://localhost:8098"></script>
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <style>
+      /* Define Consolas for all non-Korean characters */
+      @font-face {
+        font-family: 'ConsolasMono';
+        src: local('Consolas'), local('Courier New'), monospace;
+        unicode-range: U+0000-007F, /* Basic Latin */
+                      U+0080-00FF, /* Latin-1 Supplement */
+                      U+0100-017F, /* Latin Extended-A */
+                      U+0180-024F, /* Latin Extended-B */
+                      U+0370-03FF, /* Greek and Coptic */
+                      U+0400-04FF, /* Cyrillic */
+                      U+0530-058F, /* Armenian */
+                      U+1F600-1F64F, /* Emoticons */
+                      U+0000-10FFFF; /* Fallback for all other characters */
+      }
+
+      /* Define Spoqa Han Sans Neo specifically for Korean characters */
+      @font-face {
+        font-family: 'SpoqaHanSansNeo';
+        src: local('Spoqa Han Sans Neo'), local('sans-serif');
+        unicode-range: U+1100-11FF, /* Hangul Jamo */
+                      U+3130-318F, /* Hangul Compatibility Jamo */
+                      U+AC00-D7AF, /* Hangul Syllables */
+                      U+A960-A97F, /* Hangul Jamo Extended-A */
+                      U+D7B0-D7FF; /* Hangul Jamo Extended-B */
+      }
+
+      /* Apply font families for specific character sets */
+      body {
+        font-family: 'ConsolasMono', monospace, 'SpoqaHanSansNeo';
+      }
+
+      :lang(ko) {
+        font-family: 'SpoqaHanSansNeo', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

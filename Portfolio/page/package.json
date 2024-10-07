@@ -13,6 +13,7 @@
     "langchain": "^0.3.2",
     "minimist": "^1.2.8",
     "pdf-parse": "^1.1.1",
-    "pptx2json": "^0.0.10"
+    "pptx2json": "^0.0.10",
+    "readline-sync": "^1.4.10"
   }
 }
