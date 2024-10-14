@@ -501,7 +501,7 @@ async function chromaExample() {
       searchOptions = JSON.parse(gptAnswer.response.text().replace('```json', '').replace('```', ''))
       searchOptions.queryEmbeddings && delete searchOptions.queryEmbeddings
       result = await getRelevantPassage(targetPrompt, collection, 5, searchOptions)
-      console.log(searchOptions, result)
+      // console.log(searchOptions, result)
       break;
     } catch (e) {
       errorCount++
@@ -525,7 +525,7 @@ async function chromaExample() {
     return el
   })
 
-  console.log(JSON.stringify(result, null, 2))
+  // console.log(JSON.stringify(result, null, 2))
 
   // console.log(formatAskPrompt({ DBQueryResult: result, queryText: targetPrompt }))
   const finalAnswerQuestion = await model.generateContent([formatAskPrompt({ DBQueryResult: result, queryText: targetPrompt })])
