@@ -1,27 +1,19 @@
 <template>
-  <CodeViewer 
-    contentsLanguageType="javascript" 
-    :contents="searchQuery"
-    effect="typing"
-  />
+  <div @click="removeAllDocuments">대화내용 초기화</div>
+  <!-- <CodeViewer contentsLanguageType="markdown" :contents="response.join('')" /> -->
+  <MarkdownViewer :contents="test" />
 
   <div ref="searchContainer" class="search-container" :class="{ moved: movedToBottom }">
-    <input
-      ref="searchInput"
-      v-model="searchQuery"
-      @keydown.enter="handleSearch"
-      type="text"
-      placeholder="무엇이든 물어보세요..."
-      class="search-input"
-    />
+    <input ref="searchInput" v-model="test" @keydown.enter="sendPrompt" type="text" placeholder="무엇이든 물어보세요..."
+      class="search-input" />
   </div>
 </template>
 
 <script setup>
-import CodeViewer from '@/components/CodeViewer.vue';
-import { ref } from 'vue';
+import MarkdownViewer from '@/components/MarkdownViewer.vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
-const searchQuery = ref('');
+const test = ref('');
 const movedToBottom = ref(false);
 const searchContainer = ref(null);
 const searchInput = ref(null);
@@ -34,7 +26,56 @@ const handleSearch = () => {
   }, 200);
 };
 
-const contents = ref("")
+const prompt = ref("");
+const response = ref([]);
+const errorMessage = ref("");
+let ws;
+
+// Function to initialize the WebSocket connection with the specified path
+const connectWebSocket = () => {
+  ws = new WebSocket("ws://localhost:8080/api/v1/chat"); // Include the path here
+
+  ws.onopen = () => {
+    console.log("WebSocket connection opened");
+    errorMessage.value = "";
+  };
+
+  ws.onmessage = (event) => {
+    response.value.push(event.data); // Append each message part to the response array
+  };
+
+  ws.onerror = (error) => {
+    errorMessage.value = "WebSocket error: " + error.message;
+    console.error("WebSocket error:", error);
+  };
+
+  ws.onclose = () => {
+    console.log("WebSocket connection closed");
+    errorMessage.value = "WebSocket connection closed";
+  };
+};
+
+// Function to send the prompt to the WebSocket server
+const sendPrompt = () => {
+  if (ws && ws.readyState === WebSocket.OPEN) {
+    // Add a short delay to see the value before moving
+    setTimeout(() => {
+      movedToBottom.value = true;
+    }, 200);
+    response.value = []; // Clear previous responses
+    errorMessage.value = "";
+    ws.send(prompt.value);
+  } else {
+    errorMessage.value = "WebSocket connection is not open";
+  }
+};
+
+// Set up WebSocket on component mount and clean up on unmount
+onMounted(connectWebSocket);
+onUnmounted(() => {
+  if (ws) ws.close();
+});
+
 </script>
 
 <style scoped>
