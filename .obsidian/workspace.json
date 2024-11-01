@@ -1,0 +1,207 @@
+{
+  "main": {
+    "id": "690c4eb450f0fcd4",
+    "type": "split",
+    "children": [
+      {
+        "id": "697370636e847792",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "15e11008624bd84f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GPT_Chat_History/202410281338 - SQLite 각 Query Threaded 처리.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "202410281338 - SQLite 각 Query Threaded 처리"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8784f26983ff7cc3",
+    "type": "split",
+    "children": [
+      {
+        "id": "46e06a625b86e2eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cac62cee1a547943",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "5566c3037d6cc5f2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "path:Portfolio/page/frontend/portfolio-front/node_modules/@vitejs  ",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "3da11a8b3eeffd8d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4d513127ab25418d",
+    "type": "split",
+    "children": [
+      {
+        "id": "0feb09f832fccc9c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4d6bc1d755eae65a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "GPT_Chat_History/202410281338 - SQLite 각 Query Threaded 처리.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "202410281338 - SQLite 각 Query Threaded 처리의 백링크"
+            }
+          },
+          {
+            "id": "86130cdbfe289b10",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "GPT_Chat_History/202410281338 - SQLite 각 Query Threaded 처리.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "202410281338 - SQLite 각 Query Threaded 처리의 나가는 링크"
+            }
+          },
+          {
+            "id": "60b1601c81fa7439",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6259777b34c3377f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "GPT_Chat_History/202410281338 - SQLite 각 Query Threaded 처리.md"
+              },
+              "icon": "lucide-list",
+              "title": "202410281338 - SQLite 각 Query Threaded 처리 개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
+    }
+  },
+  "active": "15e11008624bd84f",
+  "lastOpenFiles": [
+    "Portfolio/page/frontend/portfolio-front/vite.config.js.timestamp-1730273890372-8820dc13eecbd.mjs",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.umd.js",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.umd.js.map",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.mjs.map",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.mjs",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.d.ts",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/package.json",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist",
+    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue",
+    "Portfolio/page/frontend/portfolio-front/vite.config.js.timestamp-1730273650671-f236ead95d394.mjs",
+    "Portfolio/page/frontend/portfolio-front/node_modules/mingo/dist/types/operators/query/logical/or.d.ts",
+    "Portfolio/page/frontend/portfolio-front/node_modules/mingo/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/base64-js/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/realm/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/pump/SECURITY.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/pump/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/minimist/CHANGELOG.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/minimist/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/vue-demi/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/uuid/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/uuid/LICENSE.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/uuid/CONTRIBUTING.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/uuid/CHANGELOG.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/vuvuzela/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/pouchdb-browser/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/pouchdb/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/psl/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/psl/browserstack-logo.svg",
+    "Portfolio/page/frontend/portfolio-front/node_modules/immediate/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/leveldown/deps/snappy/snappy/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/leveldown/deps/leveldb/leveldb-1.20/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/readable-stream/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/LICENSE.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/README.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/CHANGELOG.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/CONTRIBUTORS.md",
+    "Portfolio/page/frontend/portfolio-front/node_modules/level-js/node_modules/abstract-leveldown/sauce-labs.svg",
+    "Portfolio/page/frontend/portfolio-front/node_modules/level-js/sauce-labs.svg"
+  ]
+}

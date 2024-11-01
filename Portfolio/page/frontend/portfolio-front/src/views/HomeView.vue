@@ -1,22 +1,69 @@
 <template>
   <div @click="removeAllDocuments">대화내용 초기화</div>
   <!-- <CodeViewer contentsLanguageType="markdown" :contents="response.join('')" /> -->
-  <MarkdownViewer :contents="test" />
+  <MarkdownViewer :contents="response.join('')" />
 
   <div ref="searchContainer" class="search-container" :class="{ moved: movedToBottom }">
-    <input ref="searchInput" v-model="test" @keydown.enter="sendPrompt" type="text" placeholder="무엇이든 물어보세요..."
+    <input ref="searchInput" v-model="prompt" @keydown.enter="sendPrompt" type="text" placeholder="무엇이든 물어보세요..."
       class="search-input" />
   </div>
 </template>
 
 <script setup>
 import MarkdownViewer from '@/components/MarkdownViewer.vue';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watchEffect } from 'vue';
+import { PersistentCollection } from 'signaldb';
+import vueReactivityAdapter from 'signaldb-plugin-vue';
+
+// Define the Chat schema
+const ChatSchema = {
+  name: 'Chat',
+  properties: {
+    _id: 'string',
+    message: 'string',
+    response: 'string[]',
+    timestamp: 'int'
+  },
+  primaryKey: '_id',
+};
+
+// Initialize SignalDB PersistentCollection with Vue reactivity adapter
+const chats = new PersistentCollection('chats', {
+  reactivity: vueReactivityAdapter,
+});
 
 const test = ref('');
 const movedToBottom = ref(false);
 const searchContainer = ref(null);
 const searchInput = ref(null);
+
+// Function to save chat to SignalDB
+const saveChatHistory = async (message, response) => {
+  try {
+    chats.insert({
+      _id: new Date().toISOString(),
+      message,
+      response,
+      timestamp: Date.now()
+    });
+  } catch (err) {
+    console.error('Error saving to SignalDB:', err);
+  }
+};
+
+// Function to remove all documents
+const removeAllDocuments = async () => {
+  try {
+    const allChats = chats.find({});
+    allChats.fetch().forEach(chat => {
+      chats.remove(chat._id);
+    });
+    response.value = [];
+    test.value = '';
+  } catch (err) {
+    console.error('Error removing documents:', err);
+  }
+};
 
 // Triggered when Enter key is pressed
 const handleSearch = () => {
@@ -41,7 +88,8 @@ const connectWebSocket = () => {
   };
 
   ws.onmessage = (event) => {
-    response.value.push(event.data); // Append each message part to the response array
+    const resultObject = JSON.parse(event.data)
+    response.value.push(resultObject.r); // Append each message part to the response array
   };
 
   ws.onerror = (error) => {
@@ -56,7 +104,7 @@ const connectWebSocket = () => {
 };
 
 // Function to send the prompt to the WebSocket server
-const sendPrompt = () => {
+const sendPrompt = async () => {
   if (ws && ws.readyState === WebSocket.OPEN) {
     // Add a short delay to see the value before moving
     setTimeout(() => {
@@ -65,13 +113,35 @@ const sendPrompt = () => {
     response.value = []; // Clear previous responses
     errorMessage.value = "";
     ws.send(prompt.value);
+
+    // Save the chat history after receiving response
+    await saveChatHistory(prompt.value, response.value);
   } else {
     errorMessage.value = "WebSocket connection is not open";
   }
 };
 
-// Set up WebSocket on component mount and clean up on unmount
-onMounted(connectWebSocket);
+// Load chat history on mount
+const loadChatHistory = () => {
+  try {
+    const chatsCursor = chats.find({});
+    const allChats = chatsCursor.fetch().sort((a, b) => b.timestamp - a.timestamp);
+    if (allChats.length > 0) {
+      const lastChat = allChats[0];
+      test.value = lastChat.message;
+      response.value = lastChat.response;
+    }
+  } catch (err) {
+    console.error('Error loading chat history:', err);
+  }
+};
+
+// Set up WebSocket and load chat history on component mount
+onMounted(() => {
+  connectWebSocket();
+  loadChatHistory();
+});
+
 onUnmounted(() => {
   if (ws) ws.close();
 });

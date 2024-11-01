@@ -23,28 +23,67 @@
 
 ```javascript
 // inline.js (post-processing script)
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs';
+import { resolve, join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const distDir = path.resolve(__dirname, 'dist');
+// Get the current directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// 빌드된 HTML 파일 읽기
-let html = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
+// Path to the dist folder
+const distDir = resolve(__dirname, 'dist');
 
-// legacy 스크립트와 polyfills 스크립트 읽기
-const legacyScript = fs.readFileSync(path.join(distDir, 'index-legacy-szoPSGtp.js'), 'utf-8');
-const polyfillsScript = fs.readFileSync(path.join(distDir, 'polyfills-legacy-Du3vJsZT.js'), 'utf-8');
+// Read the generated HTML file
+let html = readFileSync(join(distDir, 'index.html'), 'utf-8');
 
-// 스크립트를 인라인으로 HTML에 추가
+// Function to find files based on pattern
+function findFile(pattern) {
+  const files = readdirSync(distDir);
+  return files.find((file) => file.startsWith(pattern));
+}
+
+// Find legacy JS files (index-legacy-*.js, polyfills-legacy-*.js)
+const legacyScriptFile = findFile('index-legacy-');
+const polyfillsScriptFile = findFile('polyfills-legacy-');
+
+// If we cannot find these files, throw an error
+if (!legacyScriptFile || !polyfillsScriptFile) {
+  throw new Error('Legacy or polyfill scripts not found.');
+}
+
+// Read the content of the JS files
+const legacyScriptContent = readFileSync(join(distDir, legacyScriptFile), 'utf-8');
+const polyfillsScriptContent = readFileSync(join(distDir, polyfillsScriptFile), 'utf-8');
+
+// Replace the corresponding script tags with inline contents (removing crossorigin and data-src)
 html = html.replace(
-  '</body>',
-  `<script nomodule>${legacyScript}</script><script>${polyfillsScript}</script></body>`
+  /<script nomodule crossorigin id="vite-legacy-polyfill"[^>]*><\/script>/,
+  `<script nomodule id="vite-legacy-polyfill">${polyfillsScriptContent}</script>`
 );
 
-// 최종 HTML 파일 저장
-fs.writeFileSync(path.join(distDir, 'index.html'), html);
+html = html.replace(
+  /<script nomodule crossorigin id="vite-legacy-entry"[^>]*>[^<]*<\/script>/,
+  `<script nomodule id="vite-legacy-entry">${legacyScriptContent}</script>`
+);
 
-console.log('All scripts inlined successfully.');
+// Write the updated HTML file back
+writeFileSync(join(distDir, 'index.html'), html);
+
+console.log('HTML file updated with inline legacy and polyfill scripts.');
+
+// Function to delete the legacy JS files
+function deleteFile(file) {
+  unlinkSync(join(distDir, file));
+  console.log(`Deleted file: ${file}`);
+}
+
+// Delete the legacy JS files
+deleteFile(legacyScriptFile);
+deleteFile(polyfillsScriptFile);
+
+console.log('Legacy JS files deleted successfully.');
+
 ```
 
 이 스크립트는 다음과 같은 동작을 합니다:
