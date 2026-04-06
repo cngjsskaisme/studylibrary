@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GPT_Chat_History/202410281338 - SQLite 각 Query Threaded 처리.md",
-                "mode": "preview",
+                "file": "New/Just In Case/깜란.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "202410281338 - SQLite 각 Query Threaded 처리"
+              "title": "깜란"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -154,28 +155,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
+      "switcher:빠른 전환기 열기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "bases:새 베이스 생성하기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "15e11008624bd84f",
+  "active": "cac62cee1a547943",
   "lastOpenFiles": [
-    "Portfolio/page/frontend/portfolio-front/vite.config.js.timestamp-1730273890372-8820dc13eecbd.mjs",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.umd.js",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.umd.js.map",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.mjs.map",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.mjs",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist/index.d.ts",
+    "New/Just In Case/assets/Voucher (호텔 제출용).pdf",
+    "New/Just In Case/assets/CONFIRMATION SHEET (예약확정서).pdf",
+    "New/Just In Case/assets/신청완료 _ 호텔패스.html",
+    "New/Just In Case/assets/예약확인_결제 _ 호텔패스.html",
+    "New/Just In Case/assets/예약고객정보 _ 호텔패스.html",
+    "New/Just In Case/assets/더 아남 깜란 검색결과.html",
+    "New/Just In Case/assets",
+    "New/Just In Case/새 폴더",
+    "New/Just In Case/Voucher (호텔 제출용).pdf",
+    "New/Just In Case/CONFIRMATION SHEET (예약확정서).pdf",
+    "New/Just In Case/신청완료 _ 호텔패스.html",
+    "New/커뮤니티로 사용자 유입/01.md",
+    "New/Just In Case/깜란.md",
+    "GPT_Chat_History/202410281338 - SQLite 각 Query Threaded 처리.md",
     "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/README.md",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/package.json",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue/dist",
-    "Portfolio/page/frontend/portfolio-front/node_modules/signaldb-plugin-vue",
-    "Portfolio/page/frontend/portfolio-front/vite.config.js.timestamp-1730273650671-f236ead95d394.mjs",
-    "Portfolio/page/frontend/portfolio-front/node_modules/mingo/dist/types/operators/query/logical/or.d.ts",
     "Portfolio/page/frontend/portfolio-front/node_modules/mingo/README.md",
     "Portfolio/page/frontend/portfolio-front/node_modules/base64-js/README.md",
     "Portfolio/page/frontend/portfolio-front/node_modules/realm/README.md",
@@ -198,9 +203,6 @@
     "Portfolio/page/frontend/portfolio-front/node_modules/leveldown/deps/leveldb/leveldb-1.20/README.md",
     "Portfolio/page/frontend/portfolio-front/node_modules/readable-stream/README.md",
     "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/LICENSE.md",
-    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/README.md",
-    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/CHANGELOG.md",
-    "Portfolio/page/frontend/portfolio-front/node_modules/level-supports/CONTRIBUTORS.md",
     "Portfolio/page/frontend/portfolio-front/node_modules/level-js/node_modules/abstract-leveldown/sauce-labs.svg",
     "Portfolio/page/frontend/portfolio-front/node_modules/level-js/sauce-labs.svg"
   ]
